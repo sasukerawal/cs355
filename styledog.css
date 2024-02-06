@@ -1,0 +1,24 @@
+
+
+
+body {
+    background-color: black;
+    color: green;
+
+}
+#grad1 {
+    border-radius: 80% 0% 80%;
+    height: 50px;
+    background-color: bisque;
+    opacity: 100%;
+    text-emphasis-color:  rgb(0, 252, 0);
+  }
+
+#searchbox1 {
+    height: 300px;
+    width: 250px;
+   
+    background-color: bisque;
+    border-radius: 15px 50px 30px;
+
+}
