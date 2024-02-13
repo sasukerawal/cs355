@@ -1,16 +1,39 @@
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('https://dog.ceo/dog-api/documentation')
-    .then(response => response.json())
-    .then(data => {
-        const breedsObject = data.message;
-        const breedsList = Object.keys(breedsObject);
-        const dataList = document.getElementById('breeds');
+const srcCont = document.getElementsByClassName("src-cont");
+const breedSearch = document.getElementById("breed");
+const imageButton = document.getElementById("showimage");
+const imageContainer = document.getElementById("image");
+const image = document.getElementById("image-cont")
+const breeds = document.getElementById("breeds")
 
-        breedsList.forEach(breed => {
-            const option = document.createElement('option');
-            option.value = breed;
-            dataList.appendChild(option);
-        });
+
+
+
+
+imageButton.addEventListener('click', ()=>{
+    fetch('https://dog.ceo/api/breed/'+ breedSearch.value +'/images')
+    .then(r=>r.json())
+    .then(data=>{
+        count = 0
+        setInterval(()=>{
+image.src = data.message[count];
+count ++;
+image.style.display = 'block'
+
+
+        },5000)
+    });
+
+})
+
+fetch('https://dog.ceo/api/breeds/list/all')
+    .then(r=>r.json())
+    .then(data=>{
+        for (let element in data.message) {
+            option = document.createElement('option');
+            option.value= element;
+            breeds.appendChild(option)
+
+
+        };
     })
-    .catch(error => console.error('Error fetching dog breeds:', error));
-});
+
